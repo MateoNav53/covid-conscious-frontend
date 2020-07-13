@@ -8,7 +8,6 @@
   align-items: center;
   min-height: 50px;
   padding: 1em;
-  border-radius: 25px;
 }
 .nav-links{
   display: flex;
@@ -17,4 +16,29 @@
 }
 .nav-links li {
   margin: .6em;
+}
+.nav-item {
+  color: white;
+}
+li.nav-item:hover {
+  text-decoration: none;
+}
+.brand.brand {
+  color: rgb(247, 221, 105);
+  font-size: 22px;
+}
+.brand.brand:link {
+  text-decoration: none;
+}
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.home-item {
+  padding: .5em;
+}
+.add-log-header {
+  margin-top: 1em;
 }
