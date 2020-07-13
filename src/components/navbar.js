@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 function Navbar() {
     return (
-        <nav className="navbar navbar-expand-sm navbar-primary">
-            <h2 className="">Covid Conscious </h2>
+        <nav className="navbar navbar-expand-sm navbar-light bg-primary">
+            <a href="/" className="brand">Covid Conscious</a>
             <ul className="nav-links navbar-nav navbar-brand">
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#link_targets">
                     <span className="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@ function Navbar() {
                             Username
                         </li>
                     </Link>
-                    <Link to=''>
+                    <Link to='/addlog'>
                         <li className="nav-item">
                             Add Log
                         </li>
