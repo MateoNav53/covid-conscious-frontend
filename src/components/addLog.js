@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Switch, Route, HashRouter, Redirect } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
-import LogList from '../components/LogList';
+import LogList from '../components/loglist';
 import "react-datepicker/dist/react-datepicker.css";
 
 function AddLog() {
@@ -24,23 +24,16 @@ function AddLog() {
         console.log(fullLog)
         axios.post('http://localhost:7000/log/add', fullLog)
             .then(res => console.log(res.data))
-        // axios({
-        //     method: 'post',
-        //     url: 'http://localhost:7000/log/add',
-        //     data: {
-        //         location: 'The Gulag',
-        //         logDate: new Date,
-        //         duration: 4,
-        //         interactions: 5 
-        //     },
-        //     headers: {
-        //         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-        // }
-        // }).then(res => console.log(res.data))
         e.target.reset()
-        // <Route exact path=""
-        // <Redirect to='/LogList'/>
+        // this redirect route isn't working yet
+        // return (
+        //     <HashRouter>
+        //         <Redirect to= "/loglist" />
+        //         <LogList/>
+        //     </HashRouter>
             
+        // )
+        
     }
 
     return(
@@ -63,7 +56,7 @@ function AddLog() {
                 <label htmlFor="interactions">Interactions within 6 feet</label>
                 <input type="number" placeholder="Enter number" id="interactions" name="interactions" className="form-control" value={fullLog.interactions||""} onChange={e => setFullLog({...fullLog, interactions: e.target.value})} required></input>
                 </div>
-                <button type="submit" className="btn btn-primary">Add Log</button>
+                <button type="submit" className="btn btn-warning">Add Log</button>
             </form>
         </div>
     )
