@@ -12,14 +12,19 @@ function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="link_targets">
-                    <Link to=''>
+                    <Link to='/'>
                         <li className="nav-item">
-                            Username
+                            Home
                         </li>
                     </Link>
                     <Link to='/addlog'>
                         <li className="nav-item">
                             Add Log
+                        </li>
+                    </Link>
+                    <Link to='/loglist'>
+                        <li className="nav-item">
+                            View Logs
                         </li>
                     </Link>
                     <Link to=''>
