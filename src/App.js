@@ -6,7 +6,8 @@ import Home from './components/home';
 import AddLog from './components/addLog';
 import LogList from './components/LogList';
 import CovidFaq from './components/CovidFAQ';
-import PrivateRoute from './route-permissions/PrivateRoute';
+import PublicRestricted from './route-permissions/PublicRestricted';
+import MemberRestricted from './route-permissions/MemberRestricted';
 import { HashRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
 
@@ -18,8 +19,10 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <PrivateRoute path="/loglist" component={LogList} />
-          <PrivateRoute path="/addlog" component={AddLog} />
+          <PublicRestricted path="/loglist" component={LogList} />
+          <PublicRestricted path="/addlog" component={AddLog} />
+          <MemberRestricted path="/register" component={Register} />
+          <MemberRestricted path="/login" component={Login} />
           <Route path="/addlog" component={AddLog} />
           <Route path="/loglist" component={LogList} />
           <Route path="/register" component={Register} />
