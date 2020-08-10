@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Switch, Route, HashRouter, Redirect } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
-import LogList from '../components/loglist';
+import { AuthContext } from '../context/AuthContext';
 import "react-datepicker/dist/react-datepicker.css";
 
-function AddLog() {
+function AddLog(props) {
+    const GetContext = useContext(AuthContext)
     const [fullLog, setFullLog] = useState({
         logDate: new Date(),
         location: '',
@@ -22,17 +22,10 @@ function AddLog() {
             interactions: e.target.value
         })
         console.log(fullLog)
-        axios.post('http://localhost:7000/log/add', fullLog)
+        axios.post('http://localhost:7000/user/covidlog/add', fullLog)
             .then(res => console.log(res.data))
         e.target.reset()
-        // this redirect route isn't working yet
-        // return (
-        //     <HashRouter>
-        //         <Redirect to= "/loglist" />
-        //         <LogList/>
-        //     </HashRouter>
-            
-        // )
+        props.history.push('/loglist')
         
     }
 
