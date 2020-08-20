@@ -1,11 +1,11 @@
 export default {
     getLogs: () => {
-        return fetch('http://localhost:7000/user/covidlog', 
+        console.log("getLogs")
+        return fetch('/user/covidlog', 
             {
             headers : { 
               'Content-Type': 'application/json',
               'Accept': 'application/json',
-              'Auhorization': 'Bearer ' + 'jwt'
              }
           }
             )
@@ -18,8 +18,4 @@ export default {
                     return {message : {messagBody : "UnAuthorized", errorMessage: true}};
             });
     },
-
-    postLogs: () => {
-
-    }
 }
