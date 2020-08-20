@@ -17,12 +17,12 @@ function App() {
       <Navbar/>
         <Switch>
           <Route path="/" exact component={Home} />
+          <MemberRestricted path="/register" component={Register} />
+          <MemberRestricted path="/login" component={Login} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <PublicRestricted path="/loglist" component={LogList} />
           <PublicRestricted path="/addlog" component={AddLog} />
-          <MemberRestricted path="/register" component={Register} />
-          <MemberRestricted path="/login" component={Login} />
           <Route path="/addlog" component={AddLog} />
           <Route path="/loglist" component={LogList} />
           <Route path="/register" component={Register} />
