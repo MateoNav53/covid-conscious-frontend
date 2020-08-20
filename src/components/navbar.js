@@ -7,7 +7,7 @@ import {AuthContext} from '../context/AuthContext';
 function Navbar() {
     const {isAuthenticated, user, setIsAuthenticated, setUser} = useContext(AuthContext)
 
-    const logoutUser = () => {
+    const logoutUser = (e) => {
         AuthService.logout().then(data => {
             if(data.success){
                 setUser(data.user);
@@ -67,7 +67,7 @@ function Navbar() {
                     </li>
                 </Link>
                 <Link to='/'>
-                    <button type="submit" className="btn btn-secondary btn-link nav-item" onClick={logoutUser()}>Logout</button>
+                    <button type="button" className="btn btn-secondary btn-link nav-item" onClick={logoutUser}>Logout</button>
                 </Link>
             </>
         )
