@@ -1,47 +1,27 @@
 import React, { useState, useEffect, useContext } from 'react';
+// import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import {AuthContext} from '../context/AuthContext';
 import LogService from '../services/LogService';
 
 function LogList() {
-
     const [logTable, setLogTable] = useState([])
     const GetContext = useContext(AuthContext)
     let baseInteractions = 0
     const [totalInteractions, setTotalInteractions] = useState(baseInteractions)
-
-    // useEffect(() => {
-    //     axios.get('http://localhost:7000/user/covidlog')
-    //         // .then(res => {
-    //         //     // GetContext.user.setIsAuthenticated(data.isAuthenticated)
-    //         //     if(res.status !== 401){
-    //         //         return (data => data);
-    //         //     }
-    //         //     else
-    //         //         return {message : {messsagBody : "UnAuthorized", errorMessage : true}};
-    //         // })
-    //         // .catch(err => {
-    //         //     console.log(err)
-    //         // })
-    //         .then(res => {
-    //             if(res.status !== 401) {
-    //                 setLogTable(res.data);
-    //         }})
-    //         .catch((error) => {
-    //             console.log(error);
-    //         })
-    // }, [])
+    // let history = useHistory()
 
     useEffect(()=>{
         LogService.getLogs().then(data =>{
-            setLogTable(data.logTable);
+            console.log(data)
+            setLogTable(data.logs);
         });
     },[]);
 
     const deleteLog = (_id, e) => {
         e.preventDefault()
         setLogTable(logTable.filter((selected) => selected._id !== _id))
-        axios.delete('http://localhost:7000/user/covidlog/'+_id)
+        axios.delete('/user/covidlog/'+_id)
             .then(res => console.log(res.data))
     }
 
@@ -81,8 +61,7 @@ function LogList() {
                 </thead>
                 <tbody>
                     {
-                        logTable && logTable.map(logs => { 
-                                {/* setTotalInteractions(logs.interactions += baseInteractions) */}
+                        logTable.map(logs => { 
                                 return (
                                     <tr key={logs._id}>
                                         <td>{logs.logDate.substring(0, 10)}</td>
@@ -96,6 +75,7 @@ function LogList() {
                                 ) 
                             }
                         )
+                        .sort((a, b) => a < b ? 1: -1)
                     }
                 </tbody>
             </table>
