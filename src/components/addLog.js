@@ -1,17 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
+import { useHistory, Redirect, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import DatePicker from 'react-datepicker';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthContext';
 import "react-datepicker/dist/react-datepicker.css";
+import subDays from "date-fns/subDays"
 
-function AddLog(props) {
-    const GetContext = useContext(AuthContext)
+function AddLog() {
     const [fullLog, setFullLog] = useState({
         logDate: new Date(),
         location: '',
         duration: 0,
         interactions: 0
     })
+
+    let history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -22,11 +25,11 @@ function AddLog(props) {
             interactions: e.target.value
         })
         console.log(fullLog)
-        axios.post('http://localhost:7000/user/covidlog/add', fullLog)
+        axios.post('/user/covidlog/add', fullLog)
             .then(res => console.log(res.data))
         e.target.reset()
-        props.history.push('/loglist')
-        
+        history.push('/loglist')
+        history.go(0)
     }
 
     return(
@@ -39,7 +42,7 @@ function AddLog(props) {
                 </div>
                 <div className="form-group">
                     <label htmlFor="date-of-log">Date</label>
-                    <DatePicker selected={fullLog.logDate||new Date()} name="logDate" onChange={date => setFullLog({...fullLog, logDate:date})} id="date-of-log" className="form-control" maxDate={new Date()} required/>
+                    <DatePicker selected={fullLog.logDate||new Date()} name="logDate" onChange={date => setFullLog({...fullLog, logDate:date})} id="date-of-log" className="form-control" maxDate={new Date()} minDate={subDays(new Date(), 14)} required/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="duration">Time spent at location(minutes)</label>
