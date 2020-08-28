@@ -1,6 +1,5 @@
 export default {
     getLogs: () => {
-        console.log("getLogs")
         return fetch('/user/covidlog', 
             {
             headers : { 
@@ -10,7 +9,7 @@ export default {
           }
             )
             .then(res =>{
-                console.log(res)
+                // console.log(res)
                 if(res.status !== 401){
                     return res.json().then(data => data);
                 }
