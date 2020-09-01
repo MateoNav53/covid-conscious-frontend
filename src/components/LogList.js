@@ -1,54 +1,52 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { Link, useHistory } from 'react-router-dom';
 import {AuthContext} from '../context/AuthContext';
 import LogService from '../services/LogService';
+import subDays from 'date-fns/subDays'
 
 function LogList() {
     const [logTable, setLogTable] = useState([])
     const GetContext = useContext(AuthContext)
     let baseInteractions = 0
     const [totalInteractions, setTotalInteractions] = useState(baseInteractions)
-    // let history = useHistory()
+    let history = useHistory()
+    
 
     useEffect(()=>{
         LogService.getLogs().then(data =>{
-            console.log(data)
+            data.logs.sort((a, b) => a.logDate < b.logDate ? 1 : -1);
+            data.logs.forEach((log) => {
+                let d = new Date()
+                d.setDate(d.getDate() - 14)
+                if (log.logDate > d.toISOString()){
+                    baseInteractions += log.interactions
+                }
+                setTotalInteractions(baseInteractions)
+                
+            })
             setLogTable(data.logs);
         });
-    },[]);
+    },[baseInteractions]);
 
     const deleteLog = (_id, e) => {
         e.preventDefault()
         setLogTable(logTable.filter((selected) => selected._id !== _id))
         axios.delete('/user/covidlog/'+_id)
             .then(res => console.log(res.data))
+        history.go(0)
     }
-
-    // const counter = () => {
-    //     for(logTable.interactions of logTable) {
-    //         setTotalInteractions(() => {
-    //             logTable.interactions += totalInteractions
-    //             console.log(totalInteractions)
-    //         })
-    //     }
-    // }
-
-    // setTotalInteractions({
-    //     for (let interaction of logTable.interactions) {
-    //         interaction += totalInteractions
-    //     }
-    // })
-    // for(let interaction of logTable.interactions){
-    //     console.log(interaction)
-    // }
-        
 
     return (
         <div>
-            <h1 className="text-center">View Log History</h1>
-            <h3 className="offset-md-1">Hello {GetContext.user.username}</h3>
-            <p className="counter offset-md-1">You've come within 6 feet of {totalInteractions} people in the last 14 days</p>
+            <h1 className="view-log-header">View Log History</h1>
+            <h3 className="view-log-greeting">Hello {GetContext.user.username},</h3>
+            <div className="d-flex flex-wrap">
+                <p className="counter col-md-7">You've come within 6 feet of {totalInteractions} people in the last 14 days</p>
+                <Link to="/addlog">
+                    <button type="button" className="btn btn-warning add-btn">Add New Log</button>
+                </Link>
+            </div>
             <table className="table table-hover text-center">
                 <thead className="thead-dark">
                     <tr>
@@ -75,7 +73,6 @@ function LogList() {
                                 ) 
                             }
                         )
-                        .sort((a, b) => a < b ? 1: -1)
                     }
                 </tbody>
             </table>
