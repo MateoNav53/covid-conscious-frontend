@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import {AuthContext} from '../context/AuthContext';
 import LogService from '../services/LogService';
-import subDays from 'date-fns/subDays'
 
 function LogList() {
     const [logTable, setLogTable] = useState([])
@@ -52,7 +51,7 @@ function LogList() {
                     <tr>
                         <th scope="col">Date</th>
                         <th scope="col">Location</th>
-                        <th scope="col">Duration(in minutes)</th>
+                        <th scope="col">Duration (in minutes)</th>
                         <th scope="col"># of Interactions within 6 Feet</th>
                         <th scope="col">Delete Log</th>
                     </tr>
