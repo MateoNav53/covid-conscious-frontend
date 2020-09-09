@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect} from 'react';
 import AuthService from '../services/AuthService';
-// import Message from './Message';
+import Message from '../components/Message';
 
 function Register(props) {
     const [user, setUser] = useState({
@@ -8,13 +8,10 @@ function Register(props) {
         fullname: "",
         email: "",
         password: "",
-        confirmPassword: "",
     })
-    const [error, setError] = useState('')
-    // const [message, setMessage] = useState(null);
+    const [message, setMessage] = useState('');
     let timerID = useRef(null);
 
-    //same as componentDidUnmount
     useEffect(() => {
         return () => {
             clearTimeout(timerID)
@@ -27,7 +24,6 @@ function Register(props) {
             fullname: "",
             email: "",
             password: "",
-            confirmPassword: "",
         });
     }
 
@@ -38,29 +34,23 @@ function Register(props) {
             fullname: e.target.value,
             email: e.target.value,
             password: e.target.value,
-            confirmPassword: e.target.value
         });
-        if(user.password === user.confirmPassword){
-            AuthService.register(user).then(data=>{
-                // const { message } = data;
-                // setMessage(message);
-                clearForm();
-                setError('')
+        AuthService.register(user).then(data=>{
+            const { message } = data;
+            setMessage(message);
+            clearForm();
+            if(!message.errorMessage){
                 timerID = setTimeout(()=>{
-                    props.history.push('/login');
-                },2500)
-            })
-        } else {
-            setError('Please enter same password twice for confirmation')
-        }
-        
+                props.history.push('/login');
+            },2500)
+            }
+        }) 
     }
     
     return(
         <div>
             <form action="" method="post" onSubmit={submitReg} className="col-md-8 offset-md-2">
-                <div className="error-message">{error}</div>
-                <h1 className="form-group">Register</h1>
+                <h1 className="form-group page-header">Register</h1>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input type="text" placeholder="Enter username" value={user.username||""} onChange={e => setUser({...user, username: e.target.value})} name="username" id="username" className="form-control" required></input>
@@ -77,13 +67,9 @@ function Register(props) {
                     <label htmlFor="password">Password</label>
                     <input type="password" placeholder="Enter password" value={user.password||""} onChange={e => setUser({...user, password: e.target.value})} name="password" id="password" className="form-control" required></input>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="confirm-password">Confirm Password</label>
-                    <input type="password" placeholder="Confirm password" value={user.confirmPassword||""} onChange={e => setUser({...user, confirmPassword: e.target.value})} name="confirm-password" id="confirm-password" className="form-control" required></input>
-                </div>
                 <button type="submit" className="btn btn-warning">Register</button>
             </form>
-            {/* {message ? <Message message={message}/> : null} */}
+            {message ? <Message message={message}/> : null}
         </div>
     )
 }
