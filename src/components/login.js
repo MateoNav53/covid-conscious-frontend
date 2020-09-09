@@ -1,6 +1,5 @@
 import React, {useState, useContext} from 'react';
 import AuthService from '../services/AuthService';
-import FlashFunction from './FlashMessage';
 import {AuthContext} from '../context/AuthContext';
 
 function Login(props) {
@@ -9,7 +8,6 @@ function Login(props) {
         username: "",
         password: "",
     })
-    const [flashMessage, setFlashMessage] = useState(null);
     const authContext = useContext(AuthContext);
     const [error, setError] = useState('')
 
@@ -26,7 +24,6 @@ function Login(props) {
                 authContext.setIsAuthenticated(isAuthenticated);
                 setError('')
                 props.history.push('/loglist');
-                console.log(user)
             }
             else{
                 setError('Incorrect credentials, please re-enter');
@@ -38,8 +35,7 @@ function Login(props) {
     return(
         <div>
             <form action="" method="post" className="col-md-8 offset-md-2" onSubmit={submitLogin}>
-                <div className="error-message">{error}</div>
-                <h1 className="form-group">Login</h1>
+                <h1 className="form-group page-header">Login</h1>
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input type="text" placeholder="Enter username" value={user.username||""} name="username" onChange={e => setUser({...user, username: e.target.value})} id="username" className="form-control" required></input>
@@ -49,8 +45,8 @@ function Login(props) {
                     <input type="password" placeholder="Enter password" value={user.password||""} name="password" onChange={e => setUser({...user, password: e.target.value})} id="password" className="form-control" required></input>
                 </div>
                 <button type="submit" className="btn btn-warning">Login</button>
+                {error ? <div className="alert alert-danger">{error}</div> : null}
             </form>
-            {/* { flashMessage ? <FlashFunction message={flashMessage} /> : null} */}
         </div>
     )
 }
