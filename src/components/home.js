@@ -25,7 +25,7 @@ function Home () {
             <div className="d-flex">
                 {!isAuthenticated ? authButtons() : null}
             </div>
-            <div class="elfsight-app-4bfe4b25-9e78-4673-836b-f6dfb62163e1"></div>
+            <div className="elfsight-app-4bfe4b25-9e78-4673-836b-f6dfb62163e1 widget"></div>
         </div>
         
         
