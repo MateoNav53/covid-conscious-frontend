@@ -22,7 +22,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:7000",
+  "proxy": "http://localhost:7000 || https://covid-conscious.herokuapp.com",
   "eslintConfig": {
     "extends": "react-app"
   },
