@@ -31,7 +31,7 @@ function LogList() {
     const deleteLog = (_id, e) => {
         e.preventDefault()
         setLogTable(logTable.filter((selected) => selected._id !== _id))
-        axios.delete('/user/covidlog/'+_id)
+        axios.delete('https://covid-conscious.herokuapp.com/user/covidlog/'+_id)
             .then(res => console.log(res.data))
         history.go(0)
     }

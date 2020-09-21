@@ -24,7 +24,7 @@ function AddLog() {
             interactions: e.target.value
         })
         console.log(fullLog)
-        axios.post('/user/covidlog/add', fullLog)
+        axios.post('https://covid-conscious.herokuapp.com/user/covidlog/add', fullLog)
             .then(res => console.log(res.data))
         e.target.reset()
         history.push('/loglist')

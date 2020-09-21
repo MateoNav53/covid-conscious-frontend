@@ -1,6 +1,6 @@
 export default {
     getLogs: () => {
-        return fetch('/user/covidlog', 
+        return fetch('https://covid-conscious.herokuapp.com/user/covidlog', 
             {
             headers : { 
               'Content-Type': 'application/json',
