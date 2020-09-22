@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, useRef } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 import {AuthContext} from '../context/AuthContext';
@@ -7,8 +7,7 @@ import LogService from '../services/LogService';
 function LogList() {
     const [logTable, setLogTable] = useState([])
     const GetContext = useContext(AuthContext)
-    let baseInteractions = 0
-    const [totalInteractions, setTotalInteractions] = useState(baseInteractions)
+    let interactionsCount = useRef(0)
     let history = useHistory()
     
 
@@ -19,14 +18,12 @@ function LogList() {
                 let d = new Date()
                 d.setDate(d.getDate() - 14)
                 if (log.logDate > d.toISOString()){
-                    baseInteractions += log.interactions
-                }
-                setTotalInteractions(baseInteractions)
-                
+                    interactionsCount.current += log.interactions
+                }                
             })
             setLogTable(data.logs);
         });
-    },[baseInteractions]);
+    },[interactionsCount]);
 
     const deleteLog = (_id, e) => {
         e.preventDefault()
@@ -41,7 +38,7 @@ function LogList() {
             <h1 className="view-log-header">View Log History</h1>
             <h3 className="view-log-greeting">Hello {GetContext.user.username},</h3>
             <div className="d-flex flex-wrap">
-                <p className="counter col-md-7">You've come within 6 feet of {totalInteractions} people in the last 14 days</p>
+                <p className="counter col-md-7">You've come within 6 feet of {interactionsCount.current} people in the last 14 days</p>
                 <Link to="/addlog">
                     <button type="button" className="btn btn-warning add-btn">Add New Log</button>
                 </Link>
