@@ -1,6 +1,5 @@
 export default {
     login : user =>{
-        console.log(user);
         return fetch('https://covid-conscious.herokuapp.com/user/login',{
             method : "post",
             body : JSON.stringify(user),
@@ -16,7 +15,6 @@ export default {
         })
     },
     register : user =>{
-        console.log(user);
         return fetch('https://covid-conscious.herokuapp.com/user/register',{
             method : "post",
             body : JSON.stringify(user),
