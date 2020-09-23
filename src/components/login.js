@@ -18,6 +18,7 @@ function Login(props) {
             password: e.target.value
         });
         AuthService.login(user).then(data=>{
+            console.log(data)
             const {isAuthenticated, user} = data;
             if(isAuthenticated){
                 authContext.setUser(user);
@@ -28,7 +29,7 @@ function Login(props) {
             else{
                 setError('Incorrect credentials, please re-enter');
             }
-        })
+        }).catch( x => console.log('ERROR', x));
 
     }
 
