@@ -6,6 +6,7 @@ export default {
             headers : {
                 'Content-Type' : 'application/json',
                 'Accept': 'application/json',
+                'Authorization': 'token'
             }
         }).then(res => {
             if(res.status !== 401)
