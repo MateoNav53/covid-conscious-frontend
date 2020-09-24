@@ -13,9 +13,11 @@ function Login(props) {
 
     const submitLogin = (e) => {
         e.preventDefault()
+        const newValueStr = e.target.value;
+        console.log('newvaluestr', newValueStr);
         setUser({
-            username: e.target.value,
-            password: e.target.value
+            username: newValueStr,
+            password: newValueStr 
         });
         AuthService.login(user).then(data=>{
             console.log(data)
