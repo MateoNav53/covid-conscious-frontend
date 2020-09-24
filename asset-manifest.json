@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/covid-conscious-frontend/static/css/main.04be3985.chunk.css",
+    "main.js": "/covid-conscious-frontend/static/js/main.f363a9fc.chunk.js",
+    "main.js.map": "/covid-conscious-frontend/static/js/main.f363a9fc.chunk.js.map",
+    "runtime-main.js": "/covid-conscious-frontend/static/js/runtime-main.68105f6c.js",
+    "runtime-main.js.map": "/covid-conscious-frontend/static/js/runtime-main.68105f6c.js.map",
+    "static/css/2.25ff2e5b.chunk.css": "/covid-conscious-frontend/static/css/2.25ff2e5b.chunk.css",
+    "static/js/2.f59de779.chunk.js": "/covid-conscious-frontend/static/js/2.f59de779.chunk.js",
+    "static/js/2.f59de779.chunk.js.map": "/covid-conscious-frontend/static/js/2.f59de779.chunk.js.map",
+    "index.html": "/covid-conscious-frontend/index.html",
+    "precache-manifest.e44dfed6e4a22b2dacff5a3781ff8148.js": "/covid-conscious-frontend/precache-manifest.e44dfed6e4a22b2dacff5a3781ff8148.js",
+    "service-worker.js": "/covid-conscious-frontend/service-worker.js",
+    "static/css/2.25ff2e5b.chunk.css.map": "/covid-conscious-frontend/static/css/2.25ff2e5b.chunk.css.map",
+    "static/css/main.04be3985.chunk.css.map": "/covid-conscious-frontend/static/css/main.04be3985.chunk.css.map",
+    "static/js/2.f59de779.chunk.js.LICENSE.txt": "/covid-conscious-frontend/static/js/2.f59de779.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.68105f6c.js",
+    "static/css/2.25ff2e5b.chunk.css",
+    "static/js/2.f59de779.chunk.js",
+    "static/css/main.04be3985.chunk.css",
+    "static/js/main.f363a9fc.chunk.js"
+  ]
+}
