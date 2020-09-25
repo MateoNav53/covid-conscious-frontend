@@ -74,9 +74,9 @@ function Navbar() {
     }
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
-            <a href="/" className="brand mb-auto">               
-                Covid Conscious  
-            </a>
+            <div className="brand">               
+                <Link to='/'>Covid Conscious</Link> 
+            </div>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#link_targets" aria-controls="link_targets" aria-expanded="false">
                 <span className="navbar-toggler-icon"></span>
             </button>
