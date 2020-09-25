@@ -24,12 +24,19 @@
 .navbar-item {
   color: white;
 }
-.brand.brand {
+nav > div > a {
   color: rgb(247, 221, 105);
   font-size: 24px;
   text-decoration: none;
   list-style: none;
-  padding-bottom: 10px;
+}
+nav > div > a:hover {
+  text-decoration: none;
+  color: rgb(247, 221, 105)
+}
+.brand {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 ul li a {
   color: white
@@ -91,9 +98,4 @@ h1.home-item {
 }
 .widget {
   width: 500px;
-}
-@media screen and (min-width:480px) {
-  .brand.brand {
-    margin-top: 11px
-  }
 }
