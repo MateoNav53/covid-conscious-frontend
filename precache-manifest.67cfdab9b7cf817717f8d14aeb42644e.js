@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "d84e544e0a71b35011703f37b9b609e5",
+    "revision": "fae168625c9a10cb3d6dbfc5b7f84ef2",
     "url": "/covid-conscious-frontend/index.html"
   },
   {
-    "revision": "977ad80c16842ace196a",
+    "revision": "5c8a1168fce7cd650447",
     "url": "/covid-conscious-frontend/static/css/2.25ff2e5b.chunk.css"
   },
   {
-    "revision": "87e042df27ea83f07c52",
+    "revision": "f524f77eea5a08d8038a",
     "url": "/covid-conscious-frontend/static/css/main.65b01d69.chunk.css"
   },
   {
-    "revision": "977ad80c16842ace196a",
-    "url": "/covid-conscious-frontend/static/js/2.b1412780.chunk.js"
+    "revision": "5c8a1168fce7cd650447",
+    "url": "/covid-conscious-frontend/static/js/2.1c4f5ad3.chunk.js"
   },
   {
     "revision": "d2966845b94a3318bf32eecc7af8015d",
-    "url": "/covid-conscious-frontend/static/js/2.b1412780.chunk.js.LICENSE.txt"
+    "url": "/covid-conscious-frontend/static/js/2.1c4f5ad3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "87e042df27ea83f07c52",
-    "url": "/covid-conscious-frontend/static/js/main.cd2d5147.chunk.js"
+    "revision": "f524f77eea5a08d8038a",
+    "url": "/covid-conscious-frontend/static/js/main.7ae234b0.chunk.js"
   },
   {
     "revision": "f825f55aaa9e7c604ae5",
