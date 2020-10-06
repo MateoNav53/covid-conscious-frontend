@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "acb3434b7be0a2cf6cfba4b1f6da0d73",
+    "revision": "e1b05b75985ecd171f8dfe45b5e754d7",
     "url": "/covid-conscious-frontend/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/covid-conscious-frontend/static/css/2.25ff2e5b.chunk.css"
   },
   {
-    "revision": "3128a520221bae7dc6ec",
+    "revision": "60056c247cae9174d1a2",
     "url": "/covid-conscious-frontend/static/css/main.65b01d69.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/covid-conscious-frontend/static/js/2.a29ba295.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3128a520221bae7dc6ec",
-    "url": "/covid-conscious-frontend/static/js/main.d8e63452.chunk.js"
+    "revision": "60056c247cae9174d1a2",
+    "url": "/covid-conscious-frontend/static/js/main.0b7a6539.chunk.js"
   },
   {
     "revision": "f825f55aaa9e7c604ae5",
