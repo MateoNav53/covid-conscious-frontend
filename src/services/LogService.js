@@ -5,11 +5,11 @@ export default {
             headers : { 
               'Content-Type': 'application/json',
               'Accept': 'application/json'
-             }
+             },
+             credentials: 'include'
           }
             )
             .then(res =>{
-                console.log(res)
                 if(res.status !== 401){
                     return res.json().then(data => data);
                 }
