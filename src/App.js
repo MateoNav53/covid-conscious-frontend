@@ -21,10 +21,6 @@ function App() {
           <MemberRestricted path="/login" component={Login} />
           <PublicRestricted path="/loglist" component={LogList} />
           <PublicRestricted path="/addlog" component={AddLog} />
-          <Route path="/addlog" component={AddLog} />
-          <Route path="/loglist" component={LogList} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
           <Route path="/covidfaq" component={CovidFaq} />
         </Switch>
         <div className="App">
