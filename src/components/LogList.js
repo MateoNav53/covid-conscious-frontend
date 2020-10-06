@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {AuthContext} from '../context/AuthContext';
 import LogService from '../services/LogService';
 
@@ -8,7 +7,6 @@ function LogList() {
     const [logTable, setLogTable] = useState([])
     const GetContext = useContext(AuthContext)
     let interactionsCount = useRef(0)
-    let history = useHistory()
     
 
     useEffect(()=>{
@@ -28,9 +26,20 @@ function LogList() {
     const deleteLog = (_id, e) => {
         e.preventDefault()
         setLogTable(logTable.filter((selected) => selected._id !== _id))
-        axios.delete('https://covid-conscious.herokuapp.com/user/covidlog/'+_id)
-            .then(res => console.log(res.data))
-        history.go(0)
+        let deletedLog = logTable.find((deleted) => deleted._id === _id)
+        let d = new Date()
+        d.setDate(d.getDate() - 14)
+        if (deletedLog.logDate > d.toISOString()){
+            interactionsCount.current -= deletedLog.interactions
+        }
+        fetch('https://covid-conscious.herokuapp.com/user/covidlog/'+_id, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "include"
+        })
+        
     }
 
     return (
