@@ -8,13 +8,11 @@ function Login(props) {
         username: "",
         password: "",
     })
-    const authContext = useContext(AuthContext);
+    const authContext = useContext(AuthContext)
     const [error, setError] = useState('')
 
     const onChange = (e) => {
-        setUser({
-            ...user, [e.target.name]: e.target.value
-        });
+        setUser({...user, [e.target.name]: e.target.value});
     }
 
     const submitLogin = (e) => {
@@ -23,15 +21,15 @@ function Login(props) {
             console.log(data)
             const {isAuthenticated, user} = data;
             if(isAuthenticated){
-                authContext.setUser(user);
-                authContext.setIsAuthenticated(isAuthenticated);
+                authContext.setUser(user)
+                authContext.setIsAuthenticated(isAuthenticated)
                 setError('')
-                props.history.push('/loglist');
+                props.history.push('/loglist')
             }
             else{
-                setError('Incorrect credentials, please re-enter');
+                setError('Incorrect credentials, please re-enter')
             }
-        }).catch( x => console.log('ERROR', x));
+        })
 
     }
 
