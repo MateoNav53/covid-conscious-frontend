@@ -6,8 +6,8 @@ export default {
             headers : {
                 'Content-Type' : 'application/json',
                 'Accept': 'application/json',
-                'Authorization': 'token'
-            }
+            },
+            credentials: 'include'
         }).then(res => {
             if(res.status !== 401)
                 return res.json().then(data => data);
@@ -21,12 +21,15 @@ export default {
             body : JSON.stringify(user),
             headers : {
                 'Content-Type' : 'application/json'
-            }
-        }).then(res => res.json())
-          .then(data => data);
+            },
+            credentials: 'include'
+        }).then(res => res.json())  
+        .then(data => data);
     },
     logout : () => {
-        return fetch('https://covid-conscious.herokuapp.com/user/logout')
+        return fetch('https://covid-conscious.herokuapp.com/user/logout',{
+            credentials: 'include'
+        })
                 .then(res => res.json())
                 .then(data => data);
     },
@@ -35,7 +38,8 @@ export default {
             headers : {
                 'Content-Type' : 'application/json',
                 'Accept': 'application/json',
-            }
+            },
+            credentials: 'include'
         })
             .then(res=>{
                 if(res.status !== 401)
