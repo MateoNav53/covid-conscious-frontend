@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory} from 'react-router-dom';
 import DatePicker from 'react-datepicker';
-import axios from 'axios';
 import "react-datepicker/dist/react-datepicker.css";
-import subDays from "date-fns/subDays"
+import subDays from "date-fns/subDays";
 
 function AddLog() {
     const [fullLog, setFullLog] = useState({
@@ -23,12 +22,18 @@ function AddLog() {
             duration: e.target.value,
             interactions: e.target.value
         })
-        console.log(fullLog)
-        axios.post('https://covid-conscious.herokuapp.com/user/covidlog/add', fullLog)
-            .then(res => console.log(res.data))
-        e.target.reset()
-        history.push('/loglist')
-        history.go(0)
+        fetch('https://covid-conscious.herokuapp.com/user/covidlog/add', {
+            body: JSON.stringify(fullLog),
+            method: "post",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: "include"
+        })
+        .then(res => {
+            console.log(res.data)
+            history.push('/loglist')
+        })
     }
 
     return(
